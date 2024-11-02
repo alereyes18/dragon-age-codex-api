@@ -14,4 +14,11 @@ swagger_queryparams.yaml
 **/package-lock.json
 **/combiner.py
 
+
+swagger.yaml 
+.prettierrc
+.app.ts
+utils/prisma.ts
+lambda.ts
+
 prisma

@@ -1,0 +1,22 @@
+{
+	"include": ["**/*"],
+	"exclude": ["node_modules"],
+	"compilerOptions": {
+		"paths": {
+      "@/db/*": ["./db/*"],
+      "@/types/*": ["./types/*"],
+	  "@/utils/*": ["./utils/*"],
+      "@/test/*": ["./test/*"]
+    },
+		"target": "ESNext",
+		"module": "ESNext",
+		"lib": ["es5", "es6"],
+		"strict": true,
+		"moduleResolution": "node",
+		"outDir": "./build",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"sourceMap": true,
+		"esModuleInterop": true
+	}
+}

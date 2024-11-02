@@ -1,0 +1,42 @@
+{
+	"name": "dragon-age-codex-api",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Rest API for the codex of all 3 Dragon Age games.",
+	"main": "server.ts",
+	"scripts": {
+ 
+ 
+		"start:tsx ": "tsx ./app.ts",
+		"test": "tsx --test ",
+		"start": "node ./build/app.js",
+		"build": "tsc"
+	},
+	"devDependencies": {
+		"@types/aws-lambda": "^8.10.145",
+		"@types/node": "^22.7.5",
+		"@types/pg": "^8.11.10",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.6.3"
+	},
+	"dependencies": {
+		"@fastify/aws-lambda": "^5.0.0",
+		"@fastify/cors": "^10.0.0",
+		"@fastify/swagger": "^9.1.0",
+		"@prisma/client": "^5.20.0",
+		"@types/ajv-errors": "^1.0.1",
+		"@types/qs": "^6.9.16",
+		"ajv": "^8.12.0",
+		"ajv-errors": "^3.0.0",
+		"ajv-keywords": "^5.1.0",
+		"aws-lambda": "^1.0.7",
+		"dotenv": "^16.4.5",
+		"fastify": "^5.0.0",
+		"kysely": "^0.27.4",
+		"pg": "^8.13.0",
+		"prisma-kysely": "^1.8.0",
+		"qs": "^6.13.0",
+		"ts-node-dev": "^2.0.0",
+		"tsx": "^4.19.1"
+	}
+}
