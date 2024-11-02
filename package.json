@@ -5,9 +5,7 @@
 	"description": "Rest API for the codex of all 3 Dragon Age games.",
 	"main": "server.ts",
 	"scripts": {
- 
- 
-		"start:tsx ": "tsx ./app.ts",
+ 		"start:tsx": "tsx ./app.ts",
 		"test": "tsx --test ",
 		"start": "node ./build/app.js",
 		"build": "tsc"
