@@ -1,0 +1,17 @@
+.vscode
+node_modules
+__pycache__
+**/*.env
+thoughts.md
+
+dac/scraping
+
+swagger_endpoints.yaml
+swagger_queryparams.yaml
+
+**/**/example
+**/todo.txt
+**/package-lock.json
+**/combiner.py
+
+prisma
