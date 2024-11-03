@@ -13,7 +13,7 @@ export default defineConfig({
 						
 						base: "api",
 						label: "Dragon Age Codex API",
-						schema: "../swagger.yaml",
+						schema: "../spec.yaml",
 					},
 				]),
 			],
@@ -21,7 +21,7 @@ export default defineConfig({
 				// Add the generated sidebar group to the sidebar.
 				...openAPISidebarGroups,
 			],
-			title: "My Docs",
+			title: "Dragin Age Codex API Documentation",
 		}),
 	],
 });
