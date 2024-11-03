@@ -13,7 +13,9 @@ This is an unofficial Dragon Age Codex REST API. It includes all codex entries f
 - Starlight (Astro, documentation)
 
 ## REST API
-The API is hosted on Render and can be accessed at [https://dragon-age-codex-api.onrender.com/v1/](https://dragon-age-codex-api.onrender.com/v1/). For documentation, see [https://dragon-age-codex-api.onrender.com/api](https://dragon-age-codex-api.onrender.com/api). Here you will find all the endpoints and their descriptions.
+The API and documentation are hosted on render.
+See documentation at [https://dragon-age-codex.onrender.com/](https://dragon-age-codex.onrender.com).
+To use the API, make reqeusts to [https://dragon-age-codex.onrender.com/api](https://dragon-age-codex.onrender.com/api). 
 
 ## Credits
 - [Dragon Age Wiki](https://dragonage.fandom.com/wiki/Dragon_Age_Wiki) for providing the codex entries.
