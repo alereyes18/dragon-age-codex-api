@@ -11,7 +11,7 @@ export default defineConfig({
 				starlightOpenAPI([
 					{
 						
-						base: "api",
+						base: "docs",
 						label: "Dragon Age Codex API",
 						schema: "../spec.yaml",
 					},
