@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: Dragon Age Codex API
+  version: 1.0.0
+servers:
+  - url: "http://127.0.0.1:3000/v1"
+
+paths:
+  /categories/{category}:
+    get:
+      summary: Return information about a specific category.
+      parameters:
+        - in: path
+          name: "category"
+          required: true
+          description: "Get information about a single category by name or ID"
+          schema:
+            type: [number, string]
+            
+            enum:
+              [
+                "art_of_war","books_and_songs","characters","characters_inquisition","controls","crafting_materials","creatures","culture_and_history","groups","history","items","letters_and_notes","lore","magic","magic_and_religion","maps","notes","places","quest_related","spell_combinations","tales","tutorials",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,
+              ]
+            examples: ["tutorials", 1]
+      responses:
+        "200":
+          description: The name and ID of the specified category. Can be used with /v1/categories/{category}, or can be used with /v1/entries?category=[name | id]} to specify a list of categories to filter by.
+          content: 
+            application/json: 
+              schema:
+                type: object
+                properties:
+                  category:
+                    type: string
+                  id:
+                    type: number
+                examples:
+                  
+
+  /categories:
+    get:
+      summary: Return a list of categories and their corresponding IDs.
+      responses:
+        "200":
+          description: A list of categories and their IDs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    category:
+                      type: string
+                    id:
+                      type: number
+                      description: The ID of the category that can be used with the /entries endpoint to specify a list of categories to filter by.
+              example:
+                - category: "Creatures"
+                  id: 23
+                - category: "Books and Songs"
+                  id: 3
+
+  /entries:
+    get:
+      summary: Returns all codex entries that match filters if applicable.
+      description: "Valid filters are: <br><br> sortBy = entry_id or title (default order is ascending, use -entry_id or -title to sort in descending order) <br><br> category = Comma separated list of category names OR id's (see /v1/categories for a list of names)<br><br>  games = Comma separated list of game ID's (1 for Dragon Age: Origins, 2 for Dragon Age 2, 3 for Dragon Age: Inquisition)"
+
+      parameters:
+        - in: query
+          name: sortBy
+          schema:
+            type: string
+          required: false
+          description: Property to sort by, can be the category, game, or id of an entry. Default sort is by entry title, ascending. Use -{category_name} use -{property} to sort in descending order.  
+        - in: query
+          name: categories
+          schema:
+            oneOf:
+              - type: array
+                items:
+                  type: string
+                description: A list of categories by name.
+              - type: array
+                items:
+                  type: number
+                description: A list of categories by number.
+        - in: query
+          name: games
+          schema:
+            type: array
+            items:
+              type: number
+            description: "A list of games to filter codex entries by. Use 1 for Dragon Age: Origins, 2 for Dragon Age 2, and 3 for Dragon Age: Inquisition"
+
+      responses:
+        "200":
+          description: A list of codex entries with the specified filters.
+          content:
+            application/json:
+              schema:
+                type: array
+
+                items:
+                  $ref: "#/components/schemas/CodexEntry"
+
+components:
+  schemas:
+    EntryGameInfo:
+      type: object
+      properties:
+        dlc:
+          type: array  
+          items:
+            type: string
+            enum:
+              [ "Trespasser" ,"The Black Emporium (DA2 DLC)" ,"Witch Hunt" ,"Legacy" ,"The Exiled Prince" ,"Mage Item Pack" ,"Warden's Keep"   ,"The Darkspawn Chronicles" ,"Feastday Gifts and Pranks" ,"Return to Ostagar" ,"Rogue Item Pack" ,"Mage Item Pack II" ,"The Golems of Amgarrak" ,"Warrior Item Pack II" ,"The Stone Prisoner" ,"Mark of the Assassin" ,"Warrior Item Pack" ,"The Descent" ,"The Black Emporium (Inquisition DLC)" ,"Jaws of Hakkon" ,"Rogue Item Pack II"]
+        image:
+          type: string
+           
+        category:
+          type: string
+        location:
+          type: string
+
+    CodexEntry:
+      type: object
+      properties:
+        entry_id:
+          type: number
+          description: The ID of the codex entry.
+        game_id:
+          type: string
+          description: The game ID of the codex entry.
+        category:
+          type: string
+          description: The category of the codex entry.
+        category_id:
+          type: number 
+          description: The category ID of the codex entry.
+
+        title:
+          type: string
+          description: The title of the codex entry.
+        content:
+          type: string
+          description: The content of the codex entry.
+        

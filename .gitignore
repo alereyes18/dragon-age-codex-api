@@ -21,4 +21,6 @@ swagger.yaml
 utils/prisma.ts
 lambda.ts
 
+**/*.lock
+
 prisma
