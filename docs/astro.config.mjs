@@ -12,11 +12,22 @@ export default defineConfig({
 					tag: 'script',
 					attrs: {
 					  src: 'https://www.googletagmanager.com/gtag/js?id=G-JKZK265NBN',
-				  
+					  async: true,
+ 					  defer: true,
 
-					} 
+					} ,
+				 
 					
 				  },
+				  {
+                    tag: 'script',
+                    content: `
+                      window.dataLayer = window.dataLayer || [];
+                      function gtag(){dataLayer.push(arguments);}
+                      gtag('js', new Date());
+                      gtag('config', 'G-JKZK265NBN');
+                    `,
+                },
 			],
 			plugins: [
 				// Generate the OpenAPI documentation pages.
