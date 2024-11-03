@@ -5,7 +5,19 @@ import starlightOpenAPI, { openAPISidebarGroups } from "starlight-openapi";
 
 export default defineConfig({
 	integrations: [
+		
 		starlight({
+			head: [
+				{
+					tag: 'script',
+					attrs: {
+					  src: 'https://www.googletagmanager.com/gtag/js?id=G-JKZK265NBN',
+				  
+
+					} 
+					
+				  },
+			],
 			plugins: [
 				// Generate the OpenAPI documentation pages.
 				starlightOpenAPI([
@@ -21,7 +33,7 @@ export default defineConfig({
 				// Add the generated sidebar group to the sidebar.
 				...openAPISidebarGroups,
 			],
-			title: "Dragin Age Codex API Documentation",
+			title: "Dragon Age Codex API Documentation",
 		}),
 	],
 });
