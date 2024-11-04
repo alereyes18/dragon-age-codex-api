@@ -54,10 +54,14 @@ await server.get("/healthcheck", async function () {
 await server.register(cors, {});
 await server.register(categoryRoutes, { prefix: getPrefix("categories") });
 await server.register(entryRoutes, { prefix: getPrefix("entries") });
+await server.get("/", (request, reply) => {
+	reply.send(JSON.stringify({message : "Welcome to the Dragon Age Codex API. See https://dragon-age-codex.onrender.com/docs for documentation."}, null, 4))
+})
+await server.get("/v1", (request, reply) => {
+	reply.send(JSON.stringify({message : "Welcome to the Dragon Age Codex API. See https://dragon-age-codex.onrender.com/docs for documentation."}, null, 4))
+})
  
 
 await server.ready();
-
-// const yaml = server.swagger({yaml: true});
-// writeFileSync("fastify.yaml", yaml);
+ 
 export default server;

@@ -35,7 +35,7 @@ async function getEntriesHandler(request: FastifyRequest, reply: FastifyReply) {
 		queryGames = games ? games.map((game: number) => "G" + game) : ["G1","G2","G3"];
 		console.log("queryCategories: ", queryCategories);
 		const response = await findEntries(sortCategory, sortOrder, queryCategories, queryGames);
-		reply.send(response);
+		reply.send(JSON.stringify(response, null, 4));
 	}
 }
 

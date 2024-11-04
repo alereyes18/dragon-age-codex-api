@@ -7,7 +7,7 @@ import { handleValidationError } from "@/utils/validate";
 async function getCategoriesHandler(request: FastifyRequest, reply: FastifyReply) {
 	if (!handleValidationError(request, reply)) {
 		const categories = await findCategories();
-		reply.send(categories);
+		reply.send(JSON.stringify(categories, null, 4));
 	}
 }
 
@@ -16,7 +16,7 @@ async function getCategoryHandler(request: FastifyRequest<{ Params: CategoryPara
 	if (!handleValidationError(request, reply)) {
 		const categoryParam = request.params.category;
 		const category = await findCategory(categoryParam);
-		reply.send(category);
+		reply.send(JSON.stringify(category, null, 4));
 	}
 }
 
