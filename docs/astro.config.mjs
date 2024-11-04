@@ -44,7 +44,7 @@ export default defineConfig({
 				// Add the generated sidebar group to the sidebar.
 				...openAPISidebarGroups,
 			],
-			title: "Dragon Age Codex API Documentation",
+			title: "Documentation",
 		}),
 	],
 });
