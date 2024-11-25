@@ -48,20 +48,23 @@ server.setErrorHandler(function (error, request: FastifyRequest, reply: FastifyR
 server.register(fastifySwagger);
 server.setValidatorCompiler(opt => ajv.compile(opt.schema));
 
-await server.get("/healthcheck", async function () {
-	return { status: "OK" };
-});
-await server.register(cors, {});
-await server.register(categoryRoutes, { prefix: getPrefix("categories") });
-await server.register(entryRoutes, { prefix: getPrefix("entries") });
-await server.get("/", (request, reply) => {
-	reply.send(JSON.stringify({message : "Welcome to the Dragon Age Codex API. See https://dragon-age-codex.onrender.com/docs for documentation."}, null, 4))
+const registerRoutes = (async () => {
+	await server.get("/healthcheck", async function () {
+		return { status: "OK" };
+	});
+	await server.register(cors, {});
+	await server.register(categoryRoutes, { prefix: getPrefix("categories") });
+	await server.register(entryRoutes, { prefix: getPrefix("entries") });
+	await server.get("/", (request, reply) => {
+		reply.send(JSON.stringify({message : "Welcome to the Dragon Age Codex API. See https://dragon-age-codex.onrender.com/docs for documentation."}, null, 4))
+	})
+	await server.get("/v1", (request, reply) => {
+		reply.send(JSON.stringify({message : "Welcome to the Dragon Age Codex API. See https://dragon-age-codex.onrender.com/docs for documentation."}, null, 4))
+	})
+	 
+	
+	await server.ready();
 })
-await server.get("/v1", (request, reply) => {
-	reply.send(JSON.stringify({message : "Welcome to the Dragon Age Codex API. See https://dragon-age-codex.onrender.com/docs for documentation."}, null, 4))
-})
- 
-
-await server.ready();
+registerRoutes();
  
 export default server;
