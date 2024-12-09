@@ -1,0 +1,205 @@
+openapi: 3.1.0
+info:
+  version: 9.2.0
+  title: "@fastify/swagger"
+components:
+  schemas: {}
+paths:
+  /healthcheck:
+    get:
+      responses:
+        "200":
+          description: Default Response
+  /v1/categories/:
+    get:
+      responses:
+        "200":
+          description: Default Response
+  /v1/categories/{category}:
+    get:
+      description: LOL
+      parameters:
+        - schema:
+            type: array
+            items:
+              type: number
+              enum:
+                - 1
+                - 2
+                - 3
+              errorMessage: The 'games' property should be a list of numbers. Allowed values
+                are 1, 2, and 3. You can provide these values as a
+                comma-separated list, e.g., 'games=1,2,3', or as multiple query
+                parameters, e.g., 'game=1&game=2&game=3'.
+          in: query
+          name: games
+          required: false
+        - schema:
+            anyOf:
+              - type: string
+                enum:
+                  - art_of_war
+                  - books_and_songs
+                  - characters
+                  - characters_inquisition
+                  - controls
+                  - crafting_materials
+                  - creatures
+                  - culture_and_history
+                  - groups
+                  - history
+                  - items
+                  - letters_and_notes
+                  - lore
+                  - magic
+                  - magic_and_religion
+                  - maps
+                  - notes
+                  - places
+                  - quest_related
+                  - spell_combinations
+                  - tales
+                  - tutorials
+              - type: number
+                enum:
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  - 6
+                  - 7
+                  - 8
+                  - 9
+                  - 10
+                  - 11
+                  - 12
+                  - 13
+                  - 14
+                  - 15
+                  - 16
+                  - 17
+                  - 18
+                  - 19
+                  - 20
+                  - 21
+                  - 22
+                  - 23
+          in: path
+          name: category
+          required: true
+      responses:
+        "200":
+          description: Default Response
+  /v1/entries/:
+    get:
+      parameters:
+        - schema:
+            type: array
+            items:
+              type: number
+              enum:
+                - 1
+                - 2
+                - 3
+              errorMessage: The 'games' property should be a list of numbers. Allowed values
+                are 1, 2, and 3. You can provide these values as a
+                comma-separated list, e.g., 'games=1,2,3', or as multiple query
+                parameters, e.g., 'game=1&game=2&game=3'.
+          in: query
+          name: games
+          required: false
+        - schema:
+            oneOf:
+              - type: array
+                items:
+                  transform:
+                    - trim
+                  type: string
+                  enum:
+                    - art_of_war
+                    - books_and_songs
+                    - characters
+                    - characters_inquisition
+                    - controls
+                    - crafting_materials
+                    - creatures
+                    - culture_and_history
+                    - groups
+                    - history
+                    - items
+                    - letters_and_notes
+                    - lore
+                    - magic
+                    - magic_and_religion
+                    - maps
+                    - notes
+                    - places
+                    - quest_related
+                    - spell_combinations
+                    - tales
+                    - tutorials
+              - type: array
+                items:
+                  type: number
+                  enum:
+                    - 1
+                    - 2
+                    - 3
+                    - 4
+                    - 5
+                    - 6
+                    - 7
+                    - 8
+                    - 9
+                    - 10
+                    - 11
+                    - 12
+                    - 13
+                    - 14
+                    - 15
+                    - 16
+                    - 17
+                    - 18
+                    - 19
+                    - 20
+                    - 21
+                    - 22
+                    - 23
+            errorMessage: Property categories must be EITHER an array of numbers, or
+              strings, types cannot be mixed. See GET /v1/categories for a list
+              of all categories and their ID's.
+          in: query
+          name: categories
+          required: false
+        - schema:
+            type: string
+            enum:
+              - -entry_id
+              - -title
+              - entry_id
+              - title
+          in: query
+          name: sortBy
+          required: false
+        - schema:
+            type: string
+            enum:
+              - asc
+              - desc
+          in: query
+          name: sortOrder
+          required: false
+      responses:
+        "200":
+          description: Default Response
+  /:
+    get:
+      responses:
+        "200":
+          description: Default Response
+  /v1:
+    get:
+      responses:
+        "200":
+          description: Default Response

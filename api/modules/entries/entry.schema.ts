@@ -67,7 +67,7 @@ const EntryQuerystringJsonSchema = {
 		},
 		type: "TYPE",
 		oneOf: "ONE OF",
-		_: "ERROREEEE",
+		 
 	},
 };
 export const schema: RouteShorthandOptions = {

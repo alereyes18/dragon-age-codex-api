@@ -5,11 +5,11 @@
 	"description": "Rest API for the codex of all 3 Dragon Age games.",
 	"main": "server.ts",
 	"scripts": {
-		"start:tsx": "tsx -r ./tracing.js ./app.ts",
+		"start:tsx": "tsx ./app.ts",
 		"test": "tsx --test ",
 		"start": "node ./build/app.js",
 		"build": "tsc",
-		"dev": "tsx watch -r ./tracing.js ./app.ts "
+		"dev": "tsx watch ./app.ts "
 	},
 	"devDependencies": {
 		"@types/aws-lambda": "^8.10.145",

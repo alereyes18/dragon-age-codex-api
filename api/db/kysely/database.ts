@@ -17,6 +17,7 @@ const dialect = new PostgresDialect({
 });
 
 export const kysely = new Kysely<DB>({ dialect, log: ["query", "error"] });
+ 
 /*
 To generate types:
 	npm i prisma-kysely@1.0.8

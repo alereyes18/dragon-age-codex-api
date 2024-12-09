@@ -8,23 +8,21 @@ export async function findEntries(sortCategory: any | "entry_id", sortOrder: str
 	console.log("Find Entries:", sortCategory, sortOrder, categories, games);
 	function buildCategoryExpression(eb: ExpressionBuilder<DB, "entries" | "appearance_details" | "categories">) {
 		let expression;
- 		if (typeof categories[0] == "number") {
+		if (typeof categories[0] == "number") {
 			const numArray = categories.map(category => parseInt(category as string));
 			console.log(numArray);
-			console.log("TYPE NUMBER");
+
 			expression = eb(
 				"appearance_details.category_id",
 				"in",
 				categories.map(category => parseInt(category as string))
 			);
 		} else if (typeof categories[0] == "string") {
-			console.log("TYPE: STRING");
 			expression = eb("appearance_details.category", "in", categories as string[]);
 		}
-
-		console.log("EXPR: ", expression);
 		return expression;
 	}
+
 	const response = kysely
 		.selectFrom("appearance_details")
 		.innerJoin("categories", "categories.id", "appearance_details.category_id")
@@ -44,7 +42,10 @@ export async function findEntries(sortCategory: any | "entry_id", sortOrder: str
 		})
 		.orderBy(sortCategory, sortOrder as "asc" | "desc")
 		.execute();
+ 
+
 	console.log((await response).length);
+
 	return response;
 }
 
