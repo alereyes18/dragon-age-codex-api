@@ -36,7 +36,7 @@ export default defineConfig({
 						
 						base: "docs",
 						label: "Dragon Age Codex API",
-						schema: "../spec.yaml",
+						schema: "../api/openapi.yaml"
 					},
 				]),
 			],
